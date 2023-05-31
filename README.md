@@ -7,4 +7,4 @@
 + Ask our help bot for any questions you may have and receive your assistance instantly!
 
 
-**NOTE: this project is stil in development
+**NOTE: this project is still in development**
