@@ -5,3 +5,6 @@
 + Translate any sentences or words you wish.
 + Look up the conjugation and phrases of all words.
 + Ask our help bot for any questions you may have and receive your assistance instantly!
+
+
+**NOTE: this project is stil in development
