@@ -28,6 +28,9 @@ const Navbar = async ({}) => {
           <Link href={"/"} className="text-slate-900 dark:text-slate-400 font-semibold">
             RUReady
           </Link>
+          {session ? (
+            <p className="ml-5 text-slate-900 dark:text-slate-400 font-semibold">Hi! {session.user.name}</p>
+          ) : null}
         </div>
 
         {/* dark mode button for small devices */}
