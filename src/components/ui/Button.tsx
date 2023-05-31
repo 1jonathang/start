@@ -6,10 +6,10 @@ import{ Loader2 } from "lucide-react";
 export const buttonVariants = cva('active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-color focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900',  {
     variants: {
         variant: {
-            default: 'bg-slate-100 text-slate-200  hover:bg-slate-800 dark:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-100',
-            outline: 'bg-slate-100 text-slate-200 hover:bg-slate-900 dark:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-100 border border-slate-200 hover:bg-slate-100 dark:border-slate-700',
-            ghost: 'bg-transparent text-slate-800 hover:bg-slate-200 dark:hover:bg-slate-200 dark:text-slate-400 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent',
-            link: 'bg-transparent dark:bg-transparent hover:bg-slate-200 text-slate-800 dark:text-slate-400 dark:hover:bg-slate-200'
+            default: 'bg-slate-100 text-slate-200  hover:bg-slate-800 dark:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-300',
+            outline: 'bg-slate-100 text-slate-200 hover:bg-slate-900 dark:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-300 border border-slate-200 hover:bg-slate-100 dark:border-slate-700',
+            ghost: 'bg-transparent text-slate-800 hover:bg-slate-200 dark:hover:bg-slate-600 dark:text-slate-400 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent',
+            link: 'bg-transparent dark:bg-transparent hover:bg-slate-200 text-slate-800 dark:text-slate-400 dark:hover:bg-slate-600'
         },
         size: {
             default: 'h-10 py-2 px-4',

@@ -25,7 +25,7 @@ export default function RootLayout({
         inter.className
       )}
     >
-      <body className="min-h-screen bg-white dark:bg-slate-800 antialiased">
+      <body className="h-screen bg-white dark:bg-slate-800 antialiased">
         <Providers>
           {children}
 
