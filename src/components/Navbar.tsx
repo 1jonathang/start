@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
           >
             COMPANY
           </Link>
-          <div className={`ml-10 gap-5 md:flex ${isOpen ? "items-start" : "hidden"}`}>
+          <div className={`ml-5 md:flex ${isOpen ? "items-start" : "hidden"}`}>
             <Link
               href="/transcribe"
               className={buttonVariants({ variant: "ghost", size: "sm" })}

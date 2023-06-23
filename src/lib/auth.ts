@@ -1,7 +1,7 @@
 // this file will be responsible for all the authentication
 
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, getServerSession } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "./db";
@@ -88,3 +88,5 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+
+export const getAuthSession = () => getServerSession(authOptions)
