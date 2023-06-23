@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { useState } from "react";
 import { authOptions } from "@/lib/auth";
@@ -30,11 +30,12 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
         <div className="flex justify-between items-center">
           <Link
             href={"/"}
-            className="ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg"
+            className={`ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg ${isOpen ? "hidden" : "block"}`}
           >
             COMPANY
           </Link>
-          <div className={`ml-5 md:flex ${isOpen ? "items-start" : "hidden"}`}>
+
+          <div className={`ml-5 md:flex ${isOpen ? "hidden" : "items-start"}`}>
             <Link
               href="/transcribe"
               className={buttonVariants({ variant: "ghost", size: "sm" })}
@@ -119,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
           </Dialog>
         </div>
         {/* dark mode button for small devices */}
-        <div className="md:hidden">
+        <div className={`md:hidden ${isOpen ? "hidden" : "block"}`}>
           <Button variant={"ghost"} onClick={toggleMenu} className="md:hidden">
             <span className="sr-only">Open main menu</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
