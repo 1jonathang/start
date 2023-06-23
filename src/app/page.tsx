@@ -1,22 +1,37 @@
 import Navbar from "@/components/Navbar";
 import Svg1 from "@/components/Svg1";
+import Svg2 from "@/components/Svg2";
 import { buttonVariants } from "@/components/ui/Button";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { InferGetServerSidePropsType } from "next";
 
 export const metadata = {
   title: "Placeholder",
   description: "Automate your learning with AI.",
 };
 
-export default function Home() {
+export async function getServerSideProps() {
+  const session = await getServerSession(authOptions);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
+
+export default function Home({
+  session,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="relative overflow-y-auto flex items-center justify-center overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
       <div className="shadow-container shadow-[0_15px_50px_-15px_rgba(0,0,0,0.3)] max-w-[85rem] mx-auto w-full h-full">
         <div className="flex flex-col items-center h-full gap-20 md:gap-8">
-          {/* @ts-expect-error Server Component */}
-          <Navbar />
+          <Navbar session={session} />
           <div className="circle-1"></div>
           <div className="circle-2"></div>
           <div className="circle-3"></div>
@@ -40,7 +55,12 @@ export default function Home() {
                 Start Now
               </Link>
             </div>
-            <Svg1 />
+            <div className="md:block hidden">
+              <Svg1 />
+            </div>
+            <div className="md:hidden block">
+              <Svg2 />
+            </div>
           </div>
 
           <div className="w-full flex justify-center">

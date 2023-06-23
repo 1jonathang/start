@@ -1,63 +1,138 @@
+"use client";
 
-
-import flag from "@/app/flag.png";
+import { useState } from "react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import Image from "next/image";
 import Link from "next/link";
+import { Dialog } from "@headlessui/react";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
-import { buttonVariants } from "./ui/Button";
+import Button, { buttonVariants } from "./ui/Button";
 import ThemeButton from "./ui/ThemeButton";
-import Searchbar from "./Searchbar";
+import { Menu, X } from "lucide-react";
 
-const Navbar = async () => {
+interface NavbarProps {
+  session: any;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ session }) => {
   // acheiving the current session
-  const session = await getServerSession(authOptions);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="mt-5 fixed bg-transparent dark:bg-transparent z-50 top-0 w-full h-25 ">
-    <div className="container max-w-5xl mx-auto flex justify-between items-center">
-      <div className="flex justify-between items-center gap-5">
-        <Link
-          href={"/"}
-          className="ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg"
-        >
-          COMPANY
-        </Link>
-        {/* {session ? (<p>logged in as {session.user.email}</p>): null} */}
-        <Link
-          href="/transcribe"
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
-        >
-          Transcribe
-        </Link>
-        <Link
-          href="/"
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
-        >
-          Page
-        </Link>
-        <Link
-          href="/"
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
-        >
-          Page
-        </Link>
+      <div className="container max-w-5xl mx-auto flex justify-between items-center">
+        <div className="flex justify-between items-center">
+          <Link
+            href={"/"}
+            className="ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg"
+          >
+            COMPANY
+          </Link>
+          <div className={`ml-10 gap-5 md:flex ${isOpen ? "items-start" : "hidden"}`}>
+            <Link
+              href="/transcribe"
+              className={buttonVariants({ variant: "ghost", size: "sm" })}
+            >
+              Transcribe
+            </Link>
+            <Link
+              href="/"
+              className={buttonVariants({ variant: "ghost", size: "sm" })}
+            >
+              Page
+            </Link>
+            <Link
+              href="/"
+              className={buttonVariants({ variant: "ghost", size: "sm" })}
+            >
+              Page
+            </Link>
+          </div>
 
-      </div>
-
-      {/* dark mode button for small devices */}
-      <div className="md:hidden">
-        <ThemeButton />
-      </div>
-
-      <div className="hidden md:flex gap-4">
-        <ThemeButton />
-        {session ? <SignOutButton /> : <SignInButton />}
+          <Dialog
+            as="div"
+            className="lg:hidden"
+            open={isOpen}
+            onClose={setIsOpen}
+          >
+            <div className="fixed inset-0 z-50" />
+            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div className="flex items-center justify-between">
+                <a href="#" className="-m-1.5 p-1.5">
+                  <span className="font-bold">BookStore</span>
+                </a>
+                <button
+                  type="button"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <X className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-gray-500/10">
+                  <div className="space-y-2 py-6">
+                    <Link
+                      href="/transcribe"
+                      className={buttonVariants({
+                        variant: "ghost",
+                        size: "sm",
+                      })}
+                    >
+                      Transcribe
+                    </Link>
+                    <Link
+                      href="/"
+                      className={buttonVariants({
+                        variant: "ghost",
+                        size: "sm",
+                      })}
+                    >
+                      Page
+                    </Link>
+                    <Link
+                      href="/"
+                      className={buttonVariants({
+                        variant: "ghost",
+                        size: "sm",
+                      })}
+                    >
+                      Page
+                    </Link>
+                  </div>
+                  <div className="py-6">
+                    {session ? <SignOutButton /> : <SignInButton />}
+                  </div>
+                </div>
+              </div>
+            </Dialog.Panel>
+          </Dialog>
+        </div>
+        {/* dark mode button for small devices */}
+        <div className="md:hidden">
+          <Button variant={"ghost"} onClick={toggleMenu} className="md:hidden">
+            <span className="sr-only">Open main menu</span>
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </Button>
+          <ThemeButton />
+        </div>
+        <div className="hidden md:flex gap-4">
+          <Button variant={"ghost"} onClick={toggleMenu} className="md:hidden">
+            <span className="sr-only">Open main menu</span>
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </Button>
+          <ThemeButton />
+          {session ? <SignOutButton /> : <SignInButton />}
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
