@@ -4,6 +4,7 @@ import { NextAuthOptions } from "next-auth";
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 import { fetchRedis } from "@/helpers/redis";
 
 // checks if we dont set clientids
@@ -17,6 +18,18 @@ function getGoogleCredentials() {
     throw new Error("Missing GOOGLE_CLIENT_SECRET");
 
   return { clientId, clientSecret };
+}
+
+function getGithubCredentials() {
+  const Id = process.env.GITHUB_ID;
+  const Secret = process.env.GITHUB_SECRET;
+
+  if (!Id || Id.length === 0) 
+    throw new Error("Missing GITHUB_ID");
+  if (!Secret || Secret.length === 0)
+    throw new Error("Missing GITHUB_SECRET");
+
+  return { Id, Secret };
 }
 
 export const authOptions: NextAuthOptions = {
@@ -35,40 +48,39 @@ export const authOptions: NextAuthOptions = {
       clientId: getGoogleCredentials().clientId,
       clientSecret: getGoogleCredentials().clientSecret,
     }),
+    GitHubProvider({
+      clientId: getGithubCredentials().Id,
+      clientSecret: getGithubCredentials().Secret,
+    })
   ],
   // actions that are taken when certain events happen that next-auth detects
   callbacks: {
     async jwt({ token, user }) {
-      // check if there's already a user in our db
-      const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as string | null;
-
-      if (!dbUserResult) {
-        if (user) {
-          token.id = user!.id
+      console.log(user);
+      if (user) {
+        // if a new user has logged in, update the token with the new user info
+        token = {
+          ...token,
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          picture: user.image,
         }
-
-        return token
       }
-
-      const dbUser = JSON.parse(dbUserResult) as User
-
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
-      };
+      return token;
     },
-    // whenever a session is generated
+  
     async session({session, token}) {
-        if(token) {
-            session.user.id = token.id;
-            session.user.name = token.name;
-            session.user.email = token.email;
-            session.user.image = token.picture;
-        }
-
-        return session;
+      if (token) {
+        session.user = {
+          ...session.user,
+          id: token.id,
+          name: token.name,
+          email: token.email,
+          image: token.picture,
+        };
+      }
+      return session;
     },
     // if a user has signed in we want to redirect them
     redirect() {
