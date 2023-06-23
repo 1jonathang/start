@@ -5,6 +5,12 @@ import Link from "next/link";
 import { FC } from "react";
 import { getProviders, signIn } from "next-auth/react";
 
+export const metadata = {
+    title: "Placeholder",
+    description: "Automate your learning with AI.",
+  };
+  
+
 async function page() {
   const providers = await getProviders();
 

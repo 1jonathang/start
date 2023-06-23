@@ -6,7 +6,7 @@ import Paragraph from "@/components/ui/Paragraph";
 import Link from "next/link";
 
 export const metadata = {
-  title: "EduMind",
+  title: "Placeholder",
   description: "Automate your learning with AI.",
 };
 
