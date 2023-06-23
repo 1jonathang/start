@@ -2,35 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Fauna+One&family=Rubik:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+}
+
+.shadow-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px; /* You can adjust this value to control the height of the fade effect */
+    background: linear-gradient(to bottom, white, transparent);
+    pointer-events: none; /* This makes the overlay unclickable */
+  }
+
+  .dark .scroll-fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px; /* You can adjust this value to control the height of the fade effect */
+    background: linear-gradient(to bottom, rgb(30, 41, 59), transparent);
+    pointer-events: none; /* This makes the overlay unclickable */
+  }
+  
+  
+
+.circle-1 {
+    width: 360px; /* adjust as needed */
+    height: 360px; /* adjust as needed */
+    background-color: #FFE4E4;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px; /* adjust as needed */
+    left: -90px; /* adjust as needed */
+    z-index: -1;
+    filter: blur(25px)
+  }
+
+
+  .dark .circle-1 {
+    width: 360px; /* adjust as needed */
+    height: 360px; /* adjust as needed */
+    background-color: #663939;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px; /* adjust as needed */
+    left: -90px; /* adjust as needed */
+    z-index: -1;
+    filter: blur(25px)
+  }
+
+  .circle-2 {
+    width: 973px; /* adjust as needed */
+    height: 973px; /* adjust as needed */
+    background-color: #E5F0FF;
+    border-radius: 50%;
+    position: absolute;
+    top: 350px; /* adjust as needed */
+    right: -350px; /* adjust as needed */
+    z-index: -1;
+    filter: blur(25px)
+  }
+
+  .dark .circle-2 {
+    width: 973px; /* adjust as needed */
+    height: 973px; /* adjust as needed */
+    background-color: #526279;
+    border-radius: 50%;
+    position: absolute;
+    top: 350px; /* adjust as needed */
+    right: -350px; /* adjust as needed */
+    z-index: -1;
+    filter: blur(25px)
+  }
+
+  .circle-3 {
+    width: 1035px; /* adjust as needed */
+    height: 1035px; /* adjust as needed */
+    background-color: #E3FFCD;
+    border-radius: 50%;
+    position: absolute;
+    top: 1350px; /* adjust as needed */
+    left: -350px; /* adjust as needed */
+    z-index: -1;
+    filter: blur(25px)
+  }
+  
+
 .three-d {
-    text-shadow: 0px 2px 0px rgb(252, 165, 165);
+    text-shadow: 0px 1px 0px white, 0px 8px 0px rgb(235, 202, 255);
 }
 
 .dark .three-d {
-    text-shadow: 0px 2px 0px rgb(252, 165, 165);
-}
-
-.three-d {
     text-shadow: none;
 }
 
-.scrollbar-w-2::-webkit-scrollbar {
-    width: 0.25rem;
-    height: 0.25rem;
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
-    --bg-opacity: 1;
-    background-color: #f7fafc;
-    background-color: rgba(247, 250, 252, var(--bg-opacity));
+::-webkit-scrollbar-track {
+  background-color: white;
 }
 
-.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
-    --bg-opacity: 1;
-    background-color: #000000;
-    background-color: rgba(254, 202, 202, var(--bg-opacity));
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(212, 158, 245);
+  border-radius: 0.25rem;
 }
 
-.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-    border-radius: 0.25rem;
+.loader span {
+  animation-name: bounce;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.loader span:nth-child(2) {
+  animation-delay: 50ms;
+}
+.loader span:nth-child(3) {
+  animation-delay: 150ms;
 }

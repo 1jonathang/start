@@ -29,7 +29,7 @@ const Searchbar = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <IconButton type="submit" className="p-2 text-red-300">
+      <IconButton type="submit" className="p-2 dark:text-red-300">
         <Search className="w-5 h-5" />
       </IconButton>
     </Paper>

@@ -1,9 +1,10 @@
-import Providers from "@/components/Providers";
-import "./globals.css";
-import { Inter } from "next/font/google";
+'use client'
+
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,21 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        "text-slate-100 antialiased",
-        inter.className
-      )}
-    >
-      <body className="h-screen bg-white dark:bg-slate-800 antialiased">
-        <Providers>
-          {children}
+    <>
+      <style jsx global>{`
+        @import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Fauna+One&family=Rubik:wght@300;400;500;600;700&display=swap");
 
-          {/* @ts-expect-error Server Component */}
-          <Navbar />
-        </Providers>
-      </body>
-    </html>
+        body {
+          font-family: "Rubik", sans-serif;
+        }
+      `}</style>
+      <html
+        lang="en"
+        className={cn("text-slate-100 antialiased", inter.className)}
+      >
+        <body className="h-screen bg-white dark:bg-slate-800 antialiased">
+          <Providers>{children}</Providers>
+        </body>
+      </html>
+    </>
   );
 }

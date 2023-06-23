@@ -2,8 +2,9 @@
 
 import { FC, useState } from "react";
 import { signIn, signOut } from "next-auth/react";
-import Button from "./ui/Button";
+import Button, { buttonVariants } from "./ui/Button";
 import { toast } from "react-hot-toast";
+import Link from "next/link";
 
 interface SignInButtonProps {}
 
@@ -24,9 +25,12 @@ const SignInButton: FC<SignInButtonProps> = ({}) => {
   };
 
   return (
-    <Button isLoading={isLoading} onClick={signUserIn} variant={"link"}>
-        Sign In
-    </Button>
+    <Link
+      href="/sign-in"
+      className={buttonVariants({ variant: "ghost", size: "sm" })}
+    >
+      Sign In
+    </Link>
   );
 };
 
