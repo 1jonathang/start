@@ -25,6 +25,7 @@ const Navbar = async () => {
         >
           COMPANY
         </Link>
+        {/* {session ? (<p>logged in as {session.user.email}</p>): null} */}
         <Link
           href="/transcribe"
           className={buttonVariants({ variant: "ghost", size: "sm" })}

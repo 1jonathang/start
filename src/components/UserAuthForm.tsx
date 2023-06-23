@@ -1,9 +1,9 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Button, { buttonVariants } from "./ui/Button";
 import { cn } from "@/lib/utils";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
 import Icons from "./Icons";
 
@@ -12,10 +12,13 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
+  const [isGithubLoading, setIsGithubLoading] = useState<boolean>(false);
+
+  
 
   const loginWithGoogle = async () => {
-    setIsLoading(true);
+    setIsGoogleLoading(true);
 
     try {
       await signIn("google");
@@ -26,12 +29,12 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false);
-      console.log("logged in succesfully.");
+      setIsGoogleLoading(false);
+      console.log('successfully logged in')
     }
   };
   const loginWithGithub = async () => {
-    setIsLoading(true);
+    setIsGithubLoading(true);
 
     try {
       await signIn("github");
@@ -42,8 +45,8 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false);
-      console.log("logged in succesfully.");
+      setIsGithubLoading(false);
+      console.log('successfully logged in')
     }
   };
 
@@ -52,22 +55,22 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
       <Button
         variant={"outline"}
         onClick={loginWithGoogle}
-        isLoading={isLoading}
+        isLoading={isGoogleLoading}
         size="sm"
         className="mt-5 w-2/4"
       >
-        {isLoading ? null : <Icons.google className="h-4 w-4 mr-2" />}
+        {isGoogleLoading ? null : <Icons.google className="h-4 w-4 mr-2" />}
         Google
       </Button>
 
       <Button
         variant={"outline"}
         onClick={loginWithGithub}
-        isLoading={isLoading}
+        isLoading={isGithubLoading}
         size="sm"
         className="mt-2 w-2/4"
       >
-        {isLoading ? null : <Icons.github className="h-5 w-5 mr-2" />}
+        {isGithubLoading ? null : <Icons.github className="h-5 w-5 mr-2" />}
         Github
       </Button>
       

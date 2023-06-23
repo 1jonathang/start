@@ -1,11 +1,10 @@
 // this file will be responsible for all the authentication
 
-import { NextAuthOptions } from "next-auth";
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
-import { db } from "./db";
-import GoogleProvider from "next-auth/providers/google";
+import { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import { fetchRedis } from "@/helpers/redis";
+import GoogleProvider from "next-auth/providers/google";
+import { db } from "./db";
 
 // checks if we dont set clientids
 function getGoogleCredentials() {
@@ -53,6 +52,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: getGithubCredentials().Secret,
     })
   ],
+  secret: process.env.JWT_SECRET,
   // actions that are taken when certain events happen that next-auth detects
   callbacks: {
     async jwt({ token, user }) {
