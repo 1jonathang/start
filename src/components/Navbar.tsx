@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import { authOptions } from "@/lib/auth";
@@ -30,12 +30,14 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
         <div className="flex justify-between items-center">
           <Link
             href={"/"}
-            className={`ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg ${isOpen ? "hidden" : "block"}`}
+            className={`ml-3 text-slate-900 dark:text-slate-400 font-semibold text-lg ${
+              isOpen ? "hidden" : "block"
+            }`}
           >
             COMPANY
           </Link>
 
-          <div className={`ml-5 md:flex ${isOpen ? "hidden" : "items-start"}`}>
+          <div className={`md:block hidden ml-5 md:flex ${isOpen ? "hidden" : "items-start"}`}>
             <Link
               href="/transcribe"
               className={buttonVariants({ variant: "ghost", size: "sm" })}
@@ -85,28 +87,28 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
                   <div className="space-y-2 py-6">
                     <Link
                       href="/transcribe"
-                      className={buttonVariants({
+                      className={`${buttonVariants({
                         variant: "ghost",
                         size: "sm",
-                      })}
+                      })} md:hidden`}
                     >
                       Transcribe
                     </Link>
                     <Link
                       href="/"
-                      className={buttonVariants({
+                      className={`${buttonVariants({
                         variant: "ghost",
                         size: "sm",
-                      })}
+                      })} md:hidden`}
                     >
                       Page
                     </Link>
                     <Link
                       href="/"
-                      className={buttonVariants({
+                      className={`${buttonVariants({
                         variant: "ghost",
                         size: "sm",
-                      })}
+                      })} md:hidden`}
                     >
                       Page
                     </Link>
@@ -116,6 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
                   </div>
                 </div>
               </div>
+              
             </Dialog.Panel>
           </Dialog>
         </div>
