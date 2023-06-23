@@ -8,11 +8,6 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "RUReady",
-  description: "Learn Russian at the tip of your fingertips.",
-};
-
 export default function RootLayout({
   children,
 }: {
