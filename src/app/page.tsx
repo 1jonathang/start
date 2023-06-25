@@ -8,6 +8,8 @@ import { authOptions, getAuthSession } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { InferGetServerSidePropsType } from "next";
+import Footer from "@/components/Footer";
+import { ChevronRight } from "lucide-react";
 
 export const metadata = {
   title: "Placeholder",
@@ -21,7 +23,7 @@ export default async function Home() {
     <div className="relative overflow-y-auto flex items-center justify-center overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
       <div className="shadow-container shadow-[0_15px_50px_-15px_rgba(0,0,0,0.3)] max-w-[85rem] mx-auto w-full h-full">
         <div className="flex flex-col items-center h-full gap-20 md:gap-8">
-          <Navbar session={session}/>
+          <Navbar session={session} />
           <div className="circle-1"></div>
           <div className="circle-2"></div>
           <div className="circle-3"></div>
@@ -70,8 +72,8 @@ export default async function Home() {
           <br />
           <br />
 
-          <div className="w-full flex justify-center">
-            <div className="text-center">
+          <div className="w-full flex-col justify-center">
+            <div className="text-center mb-10">
               <LargeHeading
                 size="default"
                 className="three-d text-[#585858] dark:text-slate-200"
@@ -80,7 +82,54 @@ export default async function Home() {
                 automated notes.
               </LargeHeading>
             </div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-10">
+              <div className="flex flex-col gap-6 items-center justify-center">
+                <div className="circle-4"></div>
+                <Link
+                  className="flex items-center text-[#585858] dark:text-[#ebcaff]"
+                  href={"/"}
+                >
+                  Get Started
+                  <ChevronRight />
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-6 items-center justify-center">
+                <div className="circle-4"></div>
+                <Link
+                  className="flex items-center text-[#585858] dark:text-[#ebcaff]"
+                  href={"/"}
+                >
+                  Get Started
+                  <ChevronRight />
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-6 items-center justify-center">
+                <div className="circle-4"></div>
+                <Link
+                  className="flex items-center text-[#585858] dark:text-[#ebcaff]"
+                  href={"/"}
+                >
+                  Get Started
+                  <ChevronRight />
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-6 items-center justify-center">
+                <div className="circle-4"></div>
+                <Link
+                  className="flex items-center text-[#585858] dark:text-[#ebcaff]"
+                  href={"/"}
+                >
+                  Get Started
+                  <ChevronRight />
+                </Link>
+              </div>
+            </div>
           </div>
+
+          <Footer />
         </div>
       </div>
     </div>

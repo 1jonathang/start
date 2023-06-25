@@ -95,10 +95,19 @@ body {
     z-index: -1;
     filter: blur(25px)
   }
+
+  .circle-4 {
+    width: 152.954px;
+    height: 154px;
+    flex-shrink: 0;
+    border-radius: 154px;
+    border: 14px solid #EBCAFF;
+    background: #FFF;
+  }
   
 
 .three-d {
-    text-shadow: 0px 1px 0px white, 0px 8px 0px rgb(235, 202, 255);
+    text-shadow: 0px 1px 0px white, 0px 5px 0px #ebcaff;
 }
 
 .dark .three-d {
