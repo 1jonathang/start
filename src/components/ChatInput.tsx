@@ -3,6 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import Button from "./ui/Button";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Box, Flex, Input, InputProps } from "@chakra-ui/react"
 
 interface ChatInputProps {}
 
@@ -11,7 +12,12 @@ interface ChatEntry {
   message: string;
 }
 
-const ChatInput: FC<ChatInputProps> = ({}) => {
+type Props = {
+  onSubmit: (e: React.MouseEvent<HTMLElement>) => Promise<void>;
+  inputProps: InputProps;
+};
+
+const ChatInput = (props: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");

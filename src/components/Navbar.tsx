@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
 import { Dialog } from "@headlessui/react";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
 import Button, { buttonVariants } from "./ui/Button";
 import ThemeButton from "./ui/ThemeButton";
-import { Menu, X } from "lucide-react";
 
 interface NavbarProps {
   session: any;
