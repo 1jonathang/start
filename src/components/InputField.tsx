@@ -42,7 +42,7 @@ const InputField = (props: Props) => {
         className="p-2 rounded-md transition-all ease-in-out duration-200 hover:bg-main-bg"
         onClick={onSubmitClick}
       >
-        <Icons.planeIcon className="fill-current text-main-color" />
+        <Icons.planeIcon className="fill-current text-slate-800 dark:text-white" />
       </button>
     </div>
   );

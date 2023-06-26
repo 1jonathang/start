@@ -44,7 +44,7 @@ const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
           title={user === "me" ? "Me" : "GPT"}
         ></div>
         <div
-          className={`border border-slate-200 bg-main-bg p-2 w-auto ${
+          className={`border border-slate-700 text-slate-500 dark:text-slate-200 dark:border-slate-200 bg-main-bg p-2 w-auto ${
             user === "gpt"
               ? "rounded-bl-none rounded-lg"
               : "rounded-br-none rounded-lg"
@@ -56,7 +56,7 @@ const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
             </div>
           )}
           {user === "me" && (
-            <div className="self-start opacity-40 text-xs font-semibold">
+            <div className="self-start text-slate-400 dark:text-slate-200 text-xs font-semibold">
               Me
             </div>
           )}

@@ -4,10 +4,12 @@ import Chat from "@/components/Chat";
 import Icons from "@/components/Icons";
 import InputField from "@/components/InputField";
 import Navbar from "@/components/Navbar";
+import Uploader from "@/components/Uploader";
 import LargeHeading from "@/components/ui/LargeHeading";
 import { AnimatePresence } from "framer-motion";
 import type { NextPage } from "next";
 import React, { useState } from "react";
+import { FileUploader } from "react-drag-drop-files";
 
 type Chat = {
   user: "me" | "gpt";
@@ -20,7 +22,17 @@ const Home: NextPage = () => {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLInputElement>) => {
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleChange = (file: File) => {
+    setFile(file);
+  };
+
+  const fileTypes = ["JPG", "PNG", "GIF"];
+
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
 
     try {
@@ -79,41 +91,59 @@ const Home: NextPage = () => {
               </LargeHeading>
             </div>
             <div className="border-b-2 border-slate-400 dark:border-slate-600 w-72 mt-4"></div>
-            <div className="max-w-2xl flex flex-col justify-between bg-button-color max-h-screen rounded-xl w-full mx-auto pb-4 pt-8 px-4">
-              <div className="flex flex-col-reverse justify-start items-start max-w-800px h-full w-full mx-auto gap-8 overflow-y-auto px-4 py-8">
-                {isSubmitting && (
-                  <div className="self-start justify-center px-8 py-2">
-                    <Icons.dotLoader />
-                  </div>
-                )}
-                <AnimatePresence>
-                  {chats.map((chat, index) => {
-                    return (
-                      <Chat
-                        key={chat.originalIndex}
-                        message={chat.message}
-                        user={chat.user}
-                      />
-                    );
-                  })}
-                </AnimatePresence>
+            <div className="min-w-fit mt-12 flex gap-52">
+              <div className="text-left w-full flex-col">
+                <LargeHeading
+                  size="sm"
+                  className="text-[#585858] text-left dark:text-slate-200"
+                >
+                  Submit your pdf here.
+                </LargeHeading>
+                <div className="mt-10">
+                  {/* <FileUploader
+                    handleChange={handleChange}
+                    name="file"
+                    types={fileTypes}
+                  /> */}
+                  <Uploader />
+                </div>
               </div>
 
-              <InputField
-                inputProps={{
-                  onKeyDown: (e) => {
-                    if (e.key === "Enter" && !e.shiftKey) {
-                      handleSubmit;
-                    }
-                  },
-                  onChange: (e) => setValue(e.target.value),
-                  autoFocus: true,
-                  value,
-                }}
-                onSubmitKey={handleSubmit!}
-                onSubmitClick={handleSubmit!}
-                
-              />
+              <div className="max-w-2xl flex flex-col justify-between bg-button-color max-h-screen rounded-xl w-full mx-auto pb-4 pt-8 px-4">
+                <div className="flex flex-col-reverse justify-start items-start max-w-800px h-full w-full mx-auto gap-8 overflow-y-auto px-4 py-8">
+                  {isSubmitting && (
+                    <div className="self-start justify-center px-8 py-2">
+                      <Icons.dotLoader />
+                    </div>
+                  )}
+                  <AnimatePresence>
+                    {chats.map((chat, index) => {
+                      return (
+                        <Chat
+                          key={chat.originalIndex}
+                          message={chat.message}
+                          user={chat.user}
+                        />
+                      );
+                    })}
+                  </AnimatePresence>
+                </div>
+
+                <InputField
+                  inputProps={{
+                    onKeyDown: (e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        handleSubmit;
+                      }
+                    },
+                    onChange: (e) => setValue(e.target.value),
+                    autoFocus: true,
+                    value,
+                  }}
+                  onSubmitKey={handleSubmit!}
+                  onSubmitClick={handleSubmit!}
+                />
+              </div>
             </div>
           </div>
         </div>

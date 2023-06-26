@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@apideck/components": "^0.12.9",
+    "@aws-sdk/client-s3": "^3.359.0",
+    "@aws-sdk/s3-request-presigner": "^3.359.0",
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -24,6 +26,7 @@
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "@uploadthing/react": "^5.0.0",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "class-variance-authority": "^0.6.0",
@@ -32,13 +35,17 @@
     "eslint-config-next": "13.4.4",
     "framer-motion": "^10.12.17",
     "lucide-react": "^0.224.0",
+    "multer": "^1.4.5-lts.1",
     "next": "13.4.4",
     "next-auth": "^4.22.1",
+    "next-connect": "^1.0.0-next.4",
     "next-themes": "^0.2.1",
     "openai": "^3.3.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-drag-drop-files": "^2.3.10",
+    "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
@@ -48,6 +55,10 @@
     "sharp": "^0.32.1",
     "tailwind-merge": "^1.12.0",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "uploadthing": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/multer": "^1.4.7"
   }
 }
