@@ -14,7 +14,6 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ session }) => {
-  // acheiving the current session
 
   const [isOpen, setIsOpen] = useState(false);
 

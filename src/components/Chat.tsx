@@ -35,7 +35,7 @@ const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
       exit={{ opacity: 0, translateY: 0 }}
     >
       <div
-        className={`flex gap-1 w-full ${
+        className={`flex w-full ${
           user === "gpt" ? "flex-row" : "flex-row-reverse"
         }`}
       >
@@ -44,22 +44,12 @@ const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
           title={user === "me" ? "Me" : "GPT"}
         ></div>
         <div
-          className={`border border-slate-700 text-slate-500 dark:text-slate-200 dark:border-slate-200 bg-main-bg p-2 w-auto ${
+          className={`-mt-5 border border-slate-700 text-slate-500 dark:text-slate-200 dark:border-slate-200 bg-main-bg p-2 w-auto ${
             user === "gpt"
               ? "rounded-bl-none rounded-lg"
               : "rounded-br-none rounded-lg"
           } text-lg flex flex-col`}
         >
-          {user === "gpt" && (
-            <div className="self-end opacity-40 text-xs font-semibold">
-              GPT
-            </div>
-          )}
-          {user === "me" && (
-            <div className="self-start text-slate-400 dark:text-slate-200 text-xs font-semibold">
-              Me
-            </div>
-          )}
           <ReactMarkdown rehypePlugins={[]}>
             {user === "gpt" ? chatMessage || "" : message || ""}
           </ReactMarkdown>

@@ -1,4 +1,4 @@
-import { Input, InputProps } from "@chakra-ui/react";
+import { Input, InputProps, useColorMode } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import Icons from "./Icons";
 
@@ -11,6 +11,8 @@ type Props = {
 const InputField = (props: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { onSubmitClick, onSubmitKey, inputProps } = props;
+
+  const { colorMode } = useColorMode();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (inputProps.onKeyDown) {
@@ -25,17 +27,13 @@ const InputField = (props: Props) => {
   return (
     <div className="items-center justify-center max-w-full as-form mx-auto border border-transparent bg-none pr-2">
       <Input
-        p="1rem"
-        h="60px"
-        borderColor="none"
-        backgroundColor={'rgb(51, 65, 85)'}
-        borderRadius={'10px'}
         _hover={{ outline: "unset" }}
         _focus={{ outline: "unset" }}
         _focusVisible={{ borderColor: "transparent" }}
         resize="none"
         {...inputProps}
         onKeyDown={handleKeyDown}
+        className="bg-slate-200 dark:bg-slate-700 p-4 h-[60px] border border-slate-400 dark:border-slate-500 rounded-lg text-slate-600 dark:text-slate-400"
       />
 
       <button
