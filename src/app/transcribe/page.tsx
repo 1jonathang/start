@@ -4,9 +4,9 @@ import Uploader from "@/components/Uploader";
 import LargeHeading from "@/components/ui/LargeHeading";
 import { getAuthSession } from "@/lib/auth";
 
+
 export default async function Home() {
   const session = await getAuthSession();
-  
 
   return (
     <div className="relative overflow-y-auto flex items-center justify-center overflow-x-hidden">
@@ -24,20 +24,23 @@ export default async function Home() {
               </LargeHeading>
             </div>
             <div className="border-b-2 border-slate-400 dark:border-slate-600 w-72 mt-4"></div>
-            <div className="min-w-fit mt-12 flex gap-52">
-              <div className="text-left w-full flex-col">
+
+            <div className="max-w-full mt-12 flex gap-60 h-full">
+              <div className="items-center justify-center flex flex-col w-full h-full">
                 <LargeHeading
                   size="sm"
-                  className="text-[#585858] text-left dark:text-slate-200"
+                  className="text-[#585858] text-2xl text-left dark:text-slate-200"
                 >
                   Submit your pdf here.
                 </LargeHeading>
-                <div className="mt-10">
+                <div className="mt-10 h-full w-full flex justify-center items-center">
                   <Uploader />
                 </div>
               </div>
 
-              <ChatBot />
+              <div className="w-full">
+                <ChatBot />
+              </div>
             </div>
           </div>
         </div>

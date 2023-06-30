@@ -18,9 +18,9 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 130px; /* You can adjust this value to control the height of the fade effect */
+    height: 130px; 
     background: linear-gradient(to bottom, white, transparent);
-    pointer-events: none; /* This makes the overlay unclickable */
+    pointer-events: none;
   }
 
   .dark .scroll-fade-overlay {
@@ -28,70 +28,82 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 130px; /* You can adjust this value to control the height of the fade effect */
+    height: 130px; 
     background: linear-gradient(to bottom, rgb(30, 41, 59), transparent);
-    pointer-events: none; /* This makes the overlay unclickable */
+    pointer-events: none;
   }
   
   
 
 .circle-1 {
-    width: 360px; /* adjust as needed */
-    height: 360px; /* adjust as needed */
+    width: 360px; 
+    height: 360px; 
     background-color: #FFE4E4;
     border-radius: 50%;
     position: absolute;
-    top: -100px; /* adjust as needed */
-    left: -90px; /* adjust as needed */
+    top: -100px; 
+    left: -90px; 
     z-index: -1;
     filter: blur(25px)
   }
 
 
   .dark .circle-1 {
-    width: 360px; /* adjust as needed */
-    height: 360px; /* adjust as needed */
+    width: 360px; 
+    height: 360px; 
     background-color: #663939;
     border-radius: 50%;
     position: absolute;
-    top: -100px; /* adjust as needed */
-    left: -90px; /* adjust as needed */
+    top: -100px; 
+    left: -90px; 
     z-index: -1;
     filter: blur(25px)
   }
 
   .circle-2 {
-    width: 973px; /* adjust as needed */
-    height: 973px; /* adjust as needed */
+    width: 973px; 
+    height: 973px; 
     background-color: #E5F0FF;
     border-radius: 50%;
     position: absolute;
-    top: 350px; /* adjust as needed */
-    right: -350px; /* adjust as needed */
+    top: 350px; 
+    right: -350px; 
     z-index: -1;
     filter: blur(25px)
   }
 
   .dark .circle-2 {
-    width: 973px; /* adjust as needed */
-    height: 973px; /* adjust as needed */
+    width: 973px; 
+    height: 973px; 
     background-color: #526279;
     border-radius: 50%;
     position: absolute;
-    top: 350px; /* adjust as needed */
-    right: -350px; /* adjust as needed */
+    top: 350px; 
+    right: -350px; 
     z-index: -1;
     filter: blur(25px)
   }
 
   .circle-3 {
-    width: 1035px; /* adjust as needed */
-    height: 1035px; /* adjust as needed */
+    width: 1035px; 
+    height: 1035px; 
     background-color: #E3FFCD;
     border-radius: 50%;
     position: absolute;
-    top: 1350px; /* adjust as needed */
-    left: -350px; /* adjust as needed */
+    top: 1350px; 
+    left: -350px; 
+    z-index: -1;
+    filter: blur(25px)
+  }
+
+  .dark .circle-3 {
+    width: 1035px; 
+    height: 1035px; 
+    background-color: #265748;
+    border-radius: 50%;
+    position: absolute;
+    top: 1350px; 
+    left: -350px; 
     z-index: -1;
     filter: blur(25px)
   }

@@ -5,8 +5,13 @@ import { UploadButton } from "@/utils/uploadthing";
 import "@uploadthing/react/styles.css";
 import Image from "next/image";
 import { useState } from "react";
+import { Document, Page } from "react-pdf";
 
-export default function Home() {
+interface UploaderProps {
+  className?: string,
+}
+
+export default function Home({ className }: UploaderProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   return (
     <main>
@@ -26,16 +31,9 @@ export default function Home() {
         }}
       />
       {imageUrl && (
-        <div className="mt-8 relative w-full">
-          <Image
-            src={imageUrl}
-            alt="Uploaded image"
-            className="border-none"
-            layout="responsive" // or "intrinsic"
-            width={500} // adjust to match your image's aspect ratio
-            height={300} // adjust to match your image's aspect ratio
-          />
-        </div>
+        <div className={`mt-8 h-screen w-[600px] overflow-auto flex-grow ${className}`}>
+        <embed src={imageUrl + '#toolbar=0&zoom=72'} type="application/pdf" className="w-full h-full object-scale-down border-none"/>
+      </div>
       )}
     </main>
   );
