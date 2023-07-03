@@ -1,5 +1,6 @@
 import ChatBot from "@/components/ChatBot";
 import Navbar from "@/components/Navbar";
+import UploaderPage from "@/components/Uploader";
 import Uploader, { ImageUrlProvider } from "@/components/Uploader";
 import LargeHeading from "@/components/ui/LargeHeading";
 import { getAuthSession } from "@/lib/auth";
@@ -34,8 +35,7 @@ export default async function Home() {
                   >
                     Submit your pdf here.
                   </LargeHeading>
-                  <div className="mt-10 h-full w-full flex justify-center items-center">
-                    <Uploader children/>
+                  <UploaderPage />
                   </div>
                 </div>
 
@@ -46,7 +46,6 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </div>
     </ImageUrlProvider>
   );
 }

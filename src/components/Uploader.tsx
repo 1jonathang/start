@@ -25,7 +25,7 @@ export const ImageUrlProvider: FC<UploaderProps> = ({ children }) => {
   );
 };
 
-function Home({ className }: UploaderProps) {
+function UploaderPage() {
   const { imageUrl, setImageUrl } = useContext(ImageUrlContext)!;
   return (
     <main>
@@ -44,7 +44,7 @@ function Home({ className }: UploaderProps) {
       />
       {imageUrl && (
         <div
-          className={`mt-8 h-screen w-[600px] overflow-auto flex-grow ${className}`}
+          className={`mt-8 h-screen w-[600px] overflow-auto flex-grow`}
         >
           <embed
             src={imageUrl + "#toolbar=0&zoom=72"}
@@ -57,4 +57,4 @@ function Home({ className }: UploaderProps) {
   );
 }
 
-export default Home;
+export default UploaderPage;
