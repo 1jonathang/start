@@ -35,7 +35,8 @@ export default async function Home() {
                   >
                     Submit your pdf here.
                   </LargeHeading>
-                  <UploaderPage />
+                  <div className="mt-10 h-full w-full flex justify-center items-center">
+                    <UploaderPage />
                   </div>
                 </div>
 
@@ -46,6 +47,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
+      </div>
     </ImageUrlProvider>
   );
 }
