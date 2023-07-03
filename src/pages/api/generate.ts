@@ -1,3 +1,4 @@
+import { chatbotPrompt } from "@/helpers/chatbot-prompt";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
@@ -25,7 +26,7 @@ export default async function handler(
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: message,
+      prompt: chatbotPrompt,
       temperature: 0.6,
       max_tokens: 3500,
     });
