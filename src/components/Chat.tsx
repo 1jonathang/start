@@ -1,10 +1,6 @@
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { motion } from "framer-motion";
-import { getServerSession } from "next-auth";
-import { authOptions, getAuthSession } from "@/lib/auth";
-
-
 
 const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
   const chatStringIndex = useRef(0);
@@ -40,14 +36,10 @@ const Chat = ({ message, user }: { message: string; user: "me" | "gpt" }) => {
         }`}
       >
         <div
-          className={`inline-block w-6 h-6 bg-border-color rounded-full align-middle`}
-          title={user === "me" ? "Me" : "GPT"}
-        ></div>
-        <div
-          className={`-mt-5 border border-slate-700 text-slate-500 dark:text-slate-200 dark:border-slate-200 bg-main-bg p-2 w-auto ${
+          className={`-mt-4 text-slate-500 dark:text-slate-200  bg-main-bg p-2 w-auto ${
             user === "gpt"
-              ? "rounded-bl-none rounded-lg"
-              : "rounded-br-none rounded-lg"
+              ? "rounded-bl-none rounded-lg border border-blue-300 dark:border-blue-500"
+              : "rounded-br-none rounded-lg border border-slate-700 dark:border-slate-200"
           } text-lg flex flex-col`}
         >
           <ReactMarkdown rehypePlugins={[]}>

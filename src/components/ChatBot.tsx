@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FC, useState } from "react";
 import Icons from "./Icons";
@@ -15,7 +15,14 @@ type Chat = {
 };
 
 const ChatBot: FC<ChatBotProps> = ({}) => {
-  const [chats, setChats] = useState<Chat[]>([]);
+  const [chats, setChats] = useState<Chat[]>([
+    {
+      user: "gpt",
+      message: "Heello, how can I help you?",
+      originalIndex: 0,
+    }
+  ]);
+  
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -23,6 +30,11 @@ const ChatBot: FC<ChatBotProps> = ({}) => {
     e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLInputElement>
   ) => {
     e.preventDefault();
+
+    // no messaging blank
+    if (value.trim() === "") {
+      return;
+    }
 
     try {
       setIsSubmitting(true);

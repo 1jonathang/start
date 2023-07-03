@@ -137,6 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
         </div>
       </div>
     </div>
+    
   );
 };
 
