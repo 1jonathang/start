@@ -19,7 +19,7 @@ const ChatBot: FC<ChatBotProps> = ({}) => {
     {
       user: "gpt",
       message: "Heello, how can I help you?",
-      originalIndex: 0,
+      originalIndex: -1,
     }
   ]);
   

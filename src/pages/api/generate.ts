@@ -21,16 +21,22 @@ export default async function handler(
     return;
   }
 
+  const prompt = `You are a helpful user support chatbot embedded on a student studying service website. You are able to answer questions
+  about a pdf that the user submits to you. You are able to provide study questions about the user's submitted pdf.  
+
+  Refuse any answer, message, or response that does not have to do with the user's submitted pdf or its content.
+  Provide meaningful, detailed, and well thought-out responses that will allow the student to better understand the topics included within their submitted pdf.
+`;
+
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: ChatbotPrompt(),
+      prompt: prompt,
       temperature: 0.6,
       max_tokens: 3500,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error: any) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
