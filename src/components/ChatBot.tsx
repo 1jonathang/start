@@ -18,7 +18,7 @@ const ChatBot: FC<ChatBotProps> = ({}) => {
   const [chats, setChats] = useState<Chat[]>([
     {
       user: "gpt",
-      message: "Heello, how can I help you?",
+      message: "Hello, how can I help you?",
       originalIndex: -1,
     }
   ]);
