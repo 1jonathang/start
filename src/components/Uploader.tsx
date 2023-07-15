@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadButton } from "@/utils/uploadthing";
+import { UploadButton } from "../../utils/uploadthing";
 import "@uploadthing/react/styles.css";
 import { createContext, useContext, useState } from "react";
 import { FC, ReactNode } from "react";
@@ -58,3 +58,4 @@ function UploaderPage() {
 }
 
 export default UploaderPage;
+export const useImageUrl = () => useContext(ImageUrlContext)!;

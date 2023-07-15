@@ -1,9 +1,11 @@
 import ChatBot from "@/components/ChatBot";
+import Chatpdf from "@/components/Chatpdf";
 import Navbar from "@/components/Navbar";
 import UploaderPage from "@/components/Uploader";
 import Uploader, { ImageUrlProvider } from "@/components/Uploader";
 import LargeHeading from "@/components/ui/LargeHeading";
 import { getAuthSession } from "@/lib/auth";
+
 
 export default async function Home() {
   const session = await getAuthSession();
@@ -40,8 +42,8 @@ export default async function Home() {
                   </div>
                 </div>
 
-                <div className="w-full">
-                  <ChatBot />
+                <div className="max-w-lg mx-auto">
+                  <Chatpdf />
                 </div>
               </div>
             </div>
